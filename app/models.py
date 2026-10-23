@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 from datetime import datetime
+from typing import Optional
 
 
 class Item(BaseModel):
@@ -25,3 +26,8 @@ class OrderResponse(BaseModel):
     status: str
     items: list[Item]
     created_at: datetime
+
+
+class OrderUpdate(BaseModel):
+    total_price: Optional[float] = None
+    status: Optional[str] = None
