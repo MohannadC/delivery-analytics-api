@@ -8,9 +8,23 @@ router = APIRouter()
 
 
 @router.get("/orders", response_model=list[OrderResponse])
-def get_orders():
+def get_orders(
+    status: str | None = None,
+    restaurant: str | None = None,
+    user: str | None = None,
+    skip: int = 0,
+    limit: int = 50,
+):
+    query_filter = {}
+    if status:
+        query_filter["status"] = status
+    if restaurant:
+        query_filter["restaurant"] = restaurant
+    if user:
+        query_filter["user"] = user
+
     collection = db_connect()
-    results = collection.find({})
+    results = collection.find(query_filter).skip(skip).limit(limit)
 
     orders = []
     for doc in results:
