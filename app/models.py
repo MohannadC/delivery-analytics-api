@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from datetime import datetime
 
 
@@ -12,9 +12,9 @@ class OrderCreate(BaseModel):
     user: str
     restaurant: str
     total_price: float
-    status: str
+    status: str = "CREATED"
     items: list[Item]
-    created_at: datetime
+    created_at: datetime = Field(default_factory=datetime.now)
 
 
 class OrderResponse(BaseModel):
