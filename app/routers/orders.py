@@ -3,6 +3,7 @@ from database import db_connect
 from models import OrderResponse, OrderCreate
 from bson import ObjectId
 from bson.errors import InvalidId
+from loguru import logger
 
 router = APIRouter()
 
@@ -43,3 +44,13 @@ def get_order_by_id(order_id: str):
 
     result["id"] = str(result.pop("_id"))
     return OrderResponse(**result)
+
+
+@router.post("/orders", status_code=201)
+def post_order(new_order: OrderCreate):
+    collection = db_connect()
+    order_dict = new_order.model_dump()
+    result = collection.insert_one(order_dict)
+    order_dict["id"] = str(result.inserted_id)
+
+    return OrderResponse(**order_dict)
