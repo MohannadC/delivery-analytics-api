@@ -20,7 +20,7 @@ class OrderCreate(BaseModel):
 class OrderResponse(BaseModel):
     id: str
     user: str
-    restaraunt: str
+    restaurant: str
     total_price: float
     status: str
     items: list[Item]
