@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from database import db_connect
-from models import OrderResponse, OrderCreate
+from models import OrderResponse, OrderCreate, OrderUpdate
 from bson import ObjectId
 from bson.errors import InvalidId
 from loguru import logger
@@ -54,3 +54,20 @@ def post_order(new_order: OrderCreate):
     order_dict["id"] = str(result.inserted_id)
 
     return OrderResponse(**order_dict)
+
+
+@router.put("/orders/{order_id}", response_model=OrderResponse)
+def put_order(order_id: str, update_data: OrderUpdate):
+    update_dict = update_data.model_dump(exclude_none=True)
+    if not update_dict:
+        raise HTTPException(400, detail="Нет данных для обновления")
+
+    collection = db_connect()
+    try:
+        collection.update_one({"_id": ObjectId(order_id)}, {"$set": update_dict})
+    except:
+        raise HTTPException(404, detail="Заказ не найден")
+
+    updated_doc = collection.find_one({"_id": ObjectId(order_id)})
+    updated_doc["id"] = str(updated_doc.pop("_id"))
+    return updated_doc
