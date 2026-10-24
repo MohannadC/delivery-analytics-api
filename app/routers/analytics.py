@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from database import db_connect
-from models import RestaurantRevenue, CancellationRate
+from models import RestaurantRevenue, CancellationRate, BusinessWeekDays
 from bson import ObjectId
 from bson.errors import InvalidId
 from loguru import logger
@@ -47,5 +47,37 @@ def cancellation_rate():
         },
     ]
     results = list(collection.aggregate(pipeline))[0]
+
+    return results
+
+
+@router.get("/analytics/business", response_model=list[BusinessWeekDays])
+def day_of_week_business():
+    collection = db_connect()
+    pipeline = [
+        {"$group": {"_id": {"$dayOfWeek": "$created_at"}, "total_orders": {"$sum": 1}}},
+        {"$sort": {"_id": 1}},
+        {
+            "$project": {
+                "_id": 0,
+                "total_orders": 1,
+                "day": {
+                    "$switch": {
+                        "branches": [
+                            {"case": {"$eq": ["$_id", 1]}, "then": "Sunday"},
+                            {"case": {"$eq": ["$_id", 2]}, "then": "Monday"},
+                            {"case": {"$eq": ["$_id", 3]}, "then": "Tuesday"},
+                            {"case": {"$eq": ["$_id", 4]}, "then": "Wednesday"},
+                            {"case": {"$eq": ["$_id", 5]}, "then": "Thursday"},
+                            {"case": {"$eq": ["$_id", 6]}, "then": "Friday"},
+                            {"case": {"$eq": ["$_id", 7]}, "then": "Saturday"},
+                        ],
+                        "default": "No day of the week retrieved",
+                    }
+                },
+            }
+        },
+    ]
+    results = list(collection.aggregate(pipeline))
 
     return results
