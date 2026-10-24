@@ -13,6 +13,7 @@ class LoggingService:
         duration_ms: float,
         status_code: int,
     ):
+        result = {}
 
         log_entry = {
             "timestamp": timestamp,
@@ -23,4 +24,6 @@ class LoggingService:
         }
 
         if self.logs_collection is not None:
-            self.logs_collection.insert_one(log_entry)
+            result = self.logs_collection.insert_one(log_entry)
+
+        return result
