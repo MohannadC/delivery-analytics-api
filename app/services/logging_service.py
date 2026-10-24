@@ -1,0 +1,25 @@
+from datetime import datetime
+
+
+class LoggingService:
+    def __init__(self, logs_collection=None):
+        self.logs_collection = logs_collection
+
+    def log_request(
+        self,
+        endpoint: str,
+        method: str,
+        duration_ms: float,
+        status_code: int,
+    ):
+
+        log_entry = {
+            "timestamp": datetime.now(),
+            "endpoint": endpoint,
+            "method": method,
+            "duration_ms": duration_ms,
+            "status_code": status_code,
+        }
+
+        if self.logs_collection is not None:
+            self.logs_collection.insert_one(log_entry)
