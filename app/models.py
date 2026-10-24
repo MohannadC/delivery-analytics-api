@@ -31,3 +31,8 @@ class OrderResponse(BaseModel):
 class OrderUpdate(BaseModel):
     total_price: Optional[float] = None
     status: Optional[str] = None
+
+
+class RestaurantRevenue(BaseModel):
+    restaurant: str
+    total_revenue: float
