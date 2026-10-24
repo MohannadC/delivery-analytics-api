@@ -24,7 +24,7 @@ def top_5_revenue():
     return results
 
 
-@router.get("/analytics/cancelled")
+@router.get("/analytics/cancelled", response_model=CancellationRate)
 def cancellation_rate():
     collection = db_connect()
     pipeline = [
