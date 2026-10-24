@@ -36,3 +36,9 @@ class OrderUpdate(BaseModel):
 class RestaurantRevenue(BaseModel):
     restaurant: str
     total_revenue: float
+
+
+class CancellationRate(BaseModel):
+    total_orders: int
+    cancelled_orders: int
+    cancelled_rate: float
