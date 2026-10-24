@@ -56,6 +56,18 @@ def post_order(new_order: OrderCreate):
     return OrderResponse(**order_dict)
 
 
+@router.post("/orders/bulk", status_code=201)
+def post_orders_bulk(new_orders: list[OrderCreate]):
+    collection = db_connect()
+    order_dicts = [order.model_dump() for order in new_orders]
+    result = collection.insert_many(order_dicts)
+
+    return {
+        "inserted_count": len(order_dicts),
+        "inserted_ids": [str(id) for id in result.inserted_ids],
+    }
+
+
 @router.put("/orders/{order_id}", response_model=OrderResponse)
 def put_order(order_id: str, update_data: OrderUpdate):
     update_dict = update_data.model_dump(exclude_none=True)
