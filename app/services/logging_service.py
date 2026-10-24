@@ -7,6 +7,7 @@ class LoggingService:
 
     def log_request(
         self,
+        timestamp: datetime,
         endpoint: str,
         method: str,
         duration_ms: float,
@@ -14,7 +15,7 @@ class LoggingService:
     ):
 
         log_entry = {
-            "timestamp": datetime.now(),
+            "timestamp": timestamp,
             "endpoint": endpoint,
             "method": method,
             "duration_ms": duration_ms,
