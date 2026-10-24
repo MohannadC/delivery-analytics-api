@@ -42,3 +42,8 @@ class CancellationRate(BaseModel):
     total_orders: int
     cancelled_orders: int
     cancelled_rate: float
+
+
+class BusinessWeekDays(BaseModel):
+    total_orders: int
+    day: str
