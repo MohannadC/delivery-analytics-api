@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 from routers import orders, analytics
-from datetime import time
+from time import time
 from services.logging_service import LoggingService
 from database import db_logs_connect
 
