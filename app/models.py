@@ -47,3 +47,8 @@ class CancellationRate(BaseModel):
 class BusinessWeekDays(BaseModel):
     total_orders: int
     day: str
+
+
+class LogCreate(BaseModel):
+    number_of_logs: int
+    days: int
