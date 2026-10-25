@@ -1,15 +1,19 @@
 from fastapi import APIRouter
 from loguru import logger
+from datetime import datetime, timedelta
 from database import db_logs_connect
 
 router = APIRouter()
 
 
 @router.get("/metrics")
-def get_metrics():
+def get_metrics(time: float = 1):
     collection = db_logs_connect()
 
+    time_threshold = datetime.now() - timedelta(hours=time)
+
     pipeline = [
+        {"$match": {"timestamp": {"$gte": time_threshold}}},
         {
             "$group": {
                 "_id": None,
@@ -52,7 +56,8 @@ def get_metrics():
                         {"$floor": {"$multiply": ["$total_requests", 0.99]}},
                     ]
                 },
-            }
+                "rps": {"$divide": ["$total_requests", time * 3600]},
+            },
         },
     ]
     results = list(collection.aggregate(pipeline))
