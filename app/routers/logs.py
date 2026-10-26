@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Request
-from models import LogCreate
-from services.logging_service import LoggingService
-from database import db_logs_connect
-from services.random_service import (
+from app.models import LogCreate
+from app.services.logging_service import LoggingService
+from app.database import db_logs_connect
+from app.services.random_service import (
     generate_random_date,
     generate_random_endpoint,
     generate_realistic_latency,

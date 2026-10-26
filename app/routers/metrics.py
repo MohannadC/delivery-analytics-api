@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from datetime import datetime, timedelta
-from database import db_logs_connect
+from app.database import db_logs_connect
 
 router = APIRouter()
 

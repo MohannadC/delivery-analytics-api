@@ -1,8 +1,8 @@
 from fastapi import FastAPI, Request
-from routers import orders, analytics, logs, metrics
+from app.routers import orders, analytics, logs, metrics
 from time import time
-from services.logging_service import LoggingService
-from database import db_logs_connect
+from app.services.logging_service import LoggingService
+from app.database import db_logs_connect
 from datetime import datetime
 
 app = FastAPI()

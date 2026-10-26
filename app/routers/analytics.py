@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from database import db_connect
-from models import RestaurantRevenue, CancellationRate, BusinessWeekDays
+from app.database import db_connect
+from app.models import RestaurantRevenue, CancellationRate, BusinessWeekDays
 
 router = APIRouter()
 
