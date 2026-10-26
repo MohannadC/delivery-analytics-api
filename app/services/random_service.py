@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta
 import random
 from random import choice
-from loguru import logger
 
 
 def get_available_endpoints(app) -> list[dict]:

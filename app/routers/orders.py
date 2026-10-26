@@ -3,7 +3,6 @@ from database import db_connect
 from models import OrderResponse, OrderCreate, OrderUpdate
 from bson import ObjectId
 from bson.errors import InvalidId
-from loguru import logger
 
 router = APIRouter()
 

@@ -1,9 +1,6 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 from database import db_connect
 from models import RestaurantRevenue, CancellationRate, BusinessWeekDays
-from bson import ObjectId
-from bson.errors import InvalidId
-from loguru import logger
 
 router = APIRouter()
 

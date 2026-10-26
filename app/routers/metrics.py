@@ -1,5 +1,4 @@
 from fastapi import APIRouter
-from loguru import logger
 from datetime import datetime, timedelta
 from database import db_logs_connect
 

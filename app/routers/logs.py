@@ -1,6 +1,5 @@
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, Request
 from models import LogCreate
-from loguru import logger
 from services.logging_service import LoggingService
 from database import db_logs_connect
 from services.random_service import (
