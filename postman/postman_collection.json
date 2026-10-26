@@ -1,0 +1,285 @@
+{
+  "info": {
+    "_postman_id": "9db6eff5-27e0-4c10-961a-d947cb07bd3d",
+    "name": "delivery-analytics-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59026565",
+    "_collection_link": "https://go.postman.co/collection/59026565-9db6eff5-27e0-4c10-961a-d947cb07bd3d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "/orders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/orders",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "orders"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/orders?user=Иван Петров",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/orders?user=Иван Петров",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "orders"
+          ],
+          "query": [
+            {
+              "key": "user",
+              "value": "Иван Петров"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/orders",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "   {\r\n     \"user\": \"Павел\",\r\n     \"restaurant\": \"Бургерная\",\r\n     \"total_price\": 950.0,\r\n     \"items\": [\r\n       {\r\n         \"dish\": \"Чизбургер\",\r\n         \"quantity\": 2,\r\n         \"price\": 450.0\r\n       }\r\n     ]\r\n   }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/orders",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "orders"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/orders/bulk",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b1491\",\r\n        \"user\": \"Иван Петров\",\r\n        \"restaurant\": \"Пиццерия Маргарита\",\r\n        \"total_price\": 1200.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Пицца Маргарита\",\r\n                \"quantity\": 2,\r\n                \"price\": 600.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-11T12:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b1492\",\r\n        \"user\": \"Мария Сидорова\",\r\n        \"restaurant\": \"Суши-бар Токио\",\r\n        \"total_price\": 2500.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Ролл Филадельфия\",\r\n                \"quantity\": 2,\r\n                \"price\": 800.0\r\n            },\r\n            {\r\n                \"dish\": \"Мисо суп\",\r\n                \"quantity\": 1,\r\n                \"price\": 400.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-11T13:15:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b1493\",\r\n        \"user\": \"Алексей Иванов\",\r\n        \"restaurant\": \"Бургерная\",\r\n        \"total_price\": 800.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Чизбургер\",\r\n                \"quantity\": 2,\r\n                \"price\": 400.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-11T14:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b1494\",\r\n        \"user\": \"Елена Козлова\",\r\n        \"restaurant\": \"Пиццерия Маргарита\",\r\n        \"total_price\": 1500.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Пицца Пепперони\",\r\n                \"quantity\": 1,\r\n                \"price\": 700.0\r\n            },\r\n            {\r\n                \"dish\": \"Кола\",\r\n                \"quantity\": 2,\r\n                \"price\": 150.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-11T18:45:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b1495\",\r\n        \"user\": \"Дмитрий Волков\",\r\n        \"restaurant\": \"Китайская кухня\",\r\n        \"total_price\": 1800.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Лапша Удон\",\r\n                \"quantity\": 2,\r\n                \"price\": 600.0\r\n            },\r\n            {\r\n                \"dish\": \"Спринг-роллы\",\r\n                \"quantity\": 1,\r\n                \"price\": 400.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-11T19:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b1496\",\r\n        \"user\": \"Анна Белова\",\r\n        \"restaurant\": \"Суши-бар Токио\",\r\n        \"total_price\": 3200.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Сет Филадельфия\",\r\n                \"quantity\": 1,\r\n                \"price\": 1500.0\r\n            },\r\n            {\r\n                \"dish\": \"Гункан\",\r\n                \"quantity\": 4,\r\n                \"price\": 200.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-12T12:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b1497\",\r\n        \"user\": \"Сергей Морозов\",\r\n        \"restaurant\": \"Бургерная\",\r\n        \"total_price\": 950.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Двойной бургер\",\r\n                \"quantity\": 1,\r\n                \"price\": 550.0\r\n            },\r\n            {\r\n                \"dish\": \"Картошка фри\",\r\n                \"quantity\": 1,\r\n                \"price\": 200.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-12T13:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b1498\",\r\n        \"user\": \"Ольга Новикова\",\r\n        \"restaurant\": \"Пиццерия Маргарита\",\r\n        \"total_price\": 2100.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Пицца 4 сыра\",\r\n                \"quantity\": 1,\r\n                \"price\": 900.0\r\n            },\r\n            {\r\n                \"dish\": \"Пицца Гавайская\",\r\n                \"quantity\": 1,\r\n                \"price\": 800.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-12T14:15:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b1499\",\r\n        \"user\": \"Павел Соколов\",\r\n        \"restaurant\": \"Китайская кухня\",\r\n        \"total_price\": 1400.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Рис с курицей\",\r\n                \"quantity\": 2,\r\n                \"price\": 500.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-12T18:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b149a\",\r\n        \"user\": \"Татьяна Лебедева\",\r\n        \"restaurant\": \"Итальянская траттория\",\r\n        \"total_price\": 2800.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Паста Карбонара\",\r\n                \"quantity\": 2,\r\n                \"price\": 700.0\r\n            },\r\n            {\r\n                \"dish\": \"Тирамису\",\r\n                \"quantity\": 2,\r\n                \"price\": 350.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-12T19:45:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b149b\",\r\n        \"user\": \"Иван Петров\",\r\n        \"restaurant\": \"Бургерная\",\r\n        \"total_price\": 1100.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Бургер Классик\",\r\n                \"quantity\": 2,\r\n                \"price\": 450.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-13T12:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b149c\",\r\n        \"user\": \"Мария Сидорова\",\r\n        \"restaurant\": \"Итальянская траттория\",\r\n        \"total_price\": 1900.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Пицца Маргарита\",\r\n                \"quantity\": 1,\r\n                \"price\": 700.0\r\n            },\r\n            {\r\n                \"dish\": \"Лазанья\",\r\n                \"quantity\": 1,\r\n                \"price\": 800.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-13T13:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b149d\",\r\n        \"user\": \"Алексей Иванов\",\r\n        \"restaurant\": \"Суши-бар Токио\",\r\n        \"total_price\": 2200.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Ролл Калифорния\",\r\n                \"quantity\": 2,\r\n                \"price\": 700.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-13T14:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b149e\",\r\n        \"user\": \"Елена Козлова\",\r\n        \"restaurant\": \"Китайская кухня\",\r\n        \"total_price\": 1600.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Дим-самы\",\r\n                \"quantity\": 2,\r\n                \"price\": 600.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-13T18:15:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b149f\",\r\n        \"user\": \"Дмитрий Волков\",\r\n        \"restaurant\": \"Пиццерия Маргарита\",\r\n        \"total_price\": 1300.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Пицца Мясная\",\r\n                \"quantity\": 1,\r\n                \"price\": 850.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-13T19:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14a0\",\r\n        \"user\": \"Анна Белова\",\r\n        \"restaurant\": \"Бургерная\",\r\n        \"total_price\": 750.0,\r\n        \"status\": \"CANCELLED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Чикен бургер\",\r\n                \"quantity\": 1,\r\n                \"price\": 450.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-14T12:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14a1\",\r\n        \"user\": \"Сергей Морозов\",\r\n        \"restaurant\": \"Суши-бар Токио\",\r\n        \"total_price\": 2800.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Сет Дракон\",\r\n                \"quantity\": 1,\r\n                \"price\": 1600.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-14T13:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14a2\",\r\n        \"user\": \"Ольга Новикова\",\r\n        \"restaurant\": \"Итальянская траттория\",\r\n        \"total_price\": 2400.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Равиоли\",\r\n                \"quantity\": 2,\r\n                \"price\": 700.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-14T14:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14a3\",\r\n        \"user\": \"Павел Соколов\",\r\n        \"restaurant\": \"Пиццерия Маргарита\",\r\n        \"total_price\": 1700.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Пицца Дьябло\",\r\n                \"quantity\": 1,\r\n                \"price\": 900.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-14T18:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14a4\",\r\n        \"user\": \"Татьяна Лебедева\",\r\n        \"restaurant\": \"Китайская кухня\",\r\n        \"total_price\": 1200.0,\r\n        \"status\": \"CANCELLED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Вок с курицей\",\r\n                \"quantity\": 2,\r\n                \"price\": 500.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-14T19:15:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14a5\",\r\n        \"user\": \"Иван Петров\",\r\n        \"restaurant\": \"Итальянская траттория\",\r\n        \"total_price\": 3100.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Оссобуко\",\r\n                \"quantity\": 1,\r\n                \"price\": 1200.0\r\n            },\r\n            {\r\n                \"dish\": \"Ризотто\",\r\n                \"quantity\": 1,\r\n                \"price\": 800.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-15T12:45:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14a6\",\r\n        \"user\": \"Мария Сидорова\",\r\n        \"restaurant\": \"Бургерная\",\r\n        \"total_price\": 1050.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Бургер BBQ\",\r\n                \"quantity\": 1,\r\n                \"price\": 550.0\r\n            },\r\n            {\r\n                \"dish\": \"Наггетсы\",\r\n                \"quantity\": 1,\r\n                \"price\": 300.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-15T13:15:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14a7\",\r\n        \"user\": \"Алексей Иванов\",\r\n        \"restaurant\": \"Пиццерия Маргарита\",\r\n        \"total_price\": 1400.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Пицца Вегетарианская\",\r\n                \"quantity\": 1,\r\n                \"price\": 750.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-15T14:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14a8\",\r\n        \"user\": \"Елена Козлова\",\r\n        \"restaurant\": \"Суши-бар Токио\",\r\n        \"total_price\": 2600.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Ролл Филадельфия\",\r\n                \"quantity\": 2,\r\n                \"price\": 800.0\r\n            },\r\n            {\r\n                \"dish\": \"Эдамаме\",\r\n                \"quantity\": 1,\r\n                \"price\": 300.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-15T18:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14a9\",\r\n        \"user\": \"Дмитрий Волков\",\r\n        \"restaurant\": \"Итальянская траттория\",\r\n        \"total_price\": 2200.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Спагетти Болоньезе\",\r\n                \"quantity\": 2,\r\n                \"price\": 650.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-15T19:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14aa\",\r\n        \"user\": \"Анна Белова\",\r\n        \"restaurant\": \"Пиццерия Маргарита\",\r\n        \"total_price\": 2500.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Пицца Маргарита\",\r\n                \"quantity\": 2,\r\n                \"price\": 600.0\r\n            },\r\n            {\r\n                \"dish\": \"Пицца Пепперони\",\r\n                \"quantity\": 1,\r\n                \"price\": 700.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-16T12:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14ab\",\r\n        \"user\": \"Сергей Морозов\",\r\n        \"restaurant\": \"Китайская кухня\",\r\n        \"total_price\": 1900.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Утка по-пекински\",\r\n                \"quantity\": 1,\r\n                \"price\": 1200.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-16T13:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14ac\",\r\n        \"user\": \"Ольга Новикова\",\r\n        \"restaurant\": \"Бургерная\",\r\n        \"total_price\": 1300.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Тройной бургер\",\r\n                \"quantity\": 1,\r\n                \"price\": 700.0\r\n            },\r\n            {\r\n                \"dish\": \"Луковые кольца\",\r\n                \"quantity\": 1,\r\n                \"price\": 250.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-16T14:15:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14ad\",\r\n        \"user\": \"Павел Соколов\",\r\n        \"restaurant\": \"Суши-бар Токио\",\r\n        \"total_price\": 3500.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Сет Императорский\",\r\n                \"quantity\": 1,\r\n                \"price\": 2500.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-16T18:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14ae\",\r\n        \"user\": \"Татьяна Лебедева\",\r\n        \"restaurant\": \"Пиццерия Маргарита\",\r\n        \"total_price\": 1800.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Пицца 4 сыра\",\r\n                \"quantity\": 1,\r\n                \"price\": 900.0\r\n            },\r\n            {\r\n                \"dish\": \"Пицца Маргарита\",\r\n                \"quantity\": 1,\r\n                \"price\": 600.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-16T19:45:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14af\",\r\n        \"user\": \"Иван Петров\",\r\n        \"restaurant\": \"Суши-бар Токио\",\r\n        \"total_price\": 2900.0,\r\n        \"status\": \"DELIVERING\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Ролл Калифорния\",\r\n                \"quantity\": 2,\r\n                \"price\": 700.0\r\n            },\r\n            {\r\n                \"dish\": \"Ролл Филадельфия\",\r\n                \"quantity\": 1,\r\n                \"price\": 800.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-17T12:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14b0\",\r\n        \"user\": \"Мария Сидорова\",\r\n        \"restaurant\": \"Итальянская траттория\",\r\n        \"total_price\": 2700.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Лазанья\",\r\n                \"quantity\": 2,\r\n                \"price\": 800.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-17T13:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14b1\",\r\n        \"user\": \"Алексей Иванов\",\r\n        \"restaurant\": \"Китайская кухня\",\r\n        \"total_price\": 1500.0,\r\n        \"status\": \"PREPARING\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Лапша Удон\",\r\n                \"quantity\": 2,\r\n                \"price\": 600.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-17T14:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14b2\",\r\n        \"user\": \"Елена Козлова\",\r\n        \"restaurant\": \"Бургерная\",\r\n        \"total_price\": 900.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Чизбургер\",\r\n                \"quantity\": 2,\r\n                \"price\": 400.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-17T18:15:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14b3\",\r\n        \"user\": \"Дмитрий Волков\",\r\n        \"restaurant\": \"Суши-бар Токио\",\r\n        \"total_price\": 2400.0,\r\n        \"status\": \"CREATED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Сет Филадельфия\",\r\n                \"quantity\": 1,\r\n                \"price\": 1500.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-17T19:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14b4\",\r\n        \"user\": \"Анна Белова\",\r\n        \"restaurant\": \"Китайская кухня\",\r\n        \"total_price\": 1700.0,\r\n        \"status\": \"PREPARING\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Дим-самы\",\r\n                \"quantity\": 2,\r\n                \"price\": 600.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-18T12:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14b5\",\r\n        \"user\": \"Сергей Морозов\",\r\n        \"restaurant\": \"Пиццерия Маргарита\",\r\n        \"total_price\": 1600.0,\r\n        \"status\": \"CREATED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Пицца Мясная\",\r\n                \"quantity\": 1,\r\n                \"price\": 850.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-18T13:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14b6\",\r\n        \"user\": \"Ольга Новикова\",\r\n        \"restaurant\": \"Суши-бар Токио\",\r\n        \"total_price\": 2100.0,\r\n        \"status\": \"DELIVERING\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Ролл Дракон\",\r\n                \"quantity\": 2,\r\n                \"price\": 750.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-18T14:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14b7\",\r\n        \"user\": \"Павел Соколов\",\r\n        \"restaurant\": \"Итальянская траттория\",\r\n        \"total_price\": 2500.0,\r\n        \"status\": \"CREATED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Паста Карбонара\",\r\n                \"quantity\": 2,\r\n                \"price\": 700.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-18T18:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14b8\",\r\n        \"user\": \"Татьяна Лебедева\",\r\n        \"restaurant\": \"Бургерная\",\r\n        \"total_price\": 1100.0,\r\n        \"status\": \"PREPARING\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Двойной бургер\",\r\n                \"quantity\": 1,\r\n                \"price\": 550.0\r\n            },\r\n            {\r\n                \"dish\": \"Картошка фри\",\r\n                \"quantity\": 1,\r\n                \"price\": 200.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-18T19:15:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14b9\",\r\n        \"user\": \"Иван Петров\",\r\n        \"restaurant\": \"Китайская кухня\",\r\n        \"total_price\": 1300.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Рис с овощами\",\r\n                \"quantity\": 2,\r\n                \"price\": 450.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-12T20:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14ba\",\r\n        \"user\": \"Мария Сидорова\",\r\n        \"restaurant\": \"Пиццерия Маргарита\",\r\n        \"total_price\": 1900.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Пицца Дьябло\",\r\n                \"quantity\": 1,\r\n                \"price\": 900.0\r\n            },\r\n            {\r\n                \"dish\": \"Пицца Вегетарианская\",\r\n                \"quantity\": 1,\r\n                \"price\": 750.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-13T20:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14bb\",\r\n        \"user\": \"Алексей Иванов\",\r\n        \"restaurant\": \"Итальянская траттория\",\r\n        \"total_price\": 2300.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Ризотто с грибами\",\r\n                \"quantity\": 1,\r\n                \"price\": 800.0\r\n            },\r\n            {\r\n                \"dish\": \"Брускетта\",\r\n                \"quantity\": 2,\r\n                \"price\": 350.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-14T20:15:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14bc\",\r\n        \"user\": \"Елена Козлова\",\r\n        \"restaurant\": \"Бургерная\",\r\n        \"total_price\": 1200.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Бургер Классик\",\r\n                \"quantity\": 2,\r\n                \"price\": 450.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-15T20:45:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14bd\",\r\n        \"user\": \"Дмитрий Волков\",\r\n        \"restaurant\": \"Китайская кухня\",\r\n        \"total_price\": 2000.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Утка по-пекински\",\r\n                \"quantity\": 1,\r\n                \"price\": 1200.0\r\n            },\r\n            {\r\n                \"dish\": \"Рис\",\r\n                \"quantity\": 1,\r\n                \"price\": 300.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-16T20:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14be\",\r\n        \"user\": \"Анна Белова\",\r\n        \"restaurant\": \"Итальянская траттория\",\r\n        \"total_price\": 1800.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Спагетти Болоньезе\",\r\n                \"quantity\": 2,\r\n                \"price\": 650.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-17T20:30:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14bf\",\r\n        \"user\": \"Сергей Морозов\",\r\n        \"restaurant\": \"Бургерная\",\r\n        \"total_price\": 850.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Чикен бургер\",\r\n                \"quantity\": 1,\r\n                \"price\": 450.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-11T20:15:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14c0\",\r\n        \"user\": \"Ольга Новикова\",\r\n        \"restaurant\": \"Китайская кухня\",\r\n        \"total_price\": 1600.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Вок с креветками\",\r\n                \"quantity\": 2,\r\n                \"price\": 600.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-12T20:45:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14c1\",\r\n        \"user\": \"Павел Соколов\",\r\n        \"restaurant\": \"Бургерная\",\r\n        \"total_price\": 1000.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Бургер BBQ\",\r\n                \"quantity\": 1,\r\n                \"price\": 550.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-13T20:00:00\"\r\n    },\r\n    {\r\n        \"id\": \"6ad3c41d300886ac439b14c2\",\r\n        \"user\": \"Татьяна Лебедева\",\r\n        \"restaurant\": \"Суши-бар Токио\",\r\n        \"total_price\": 2700.0,\r\n        \"status\": \"DELIVERED\",\r\n        \"items\": [\r\n            {\r\n                \"dish\": \"Сет Дракон\",\r\n                \"quantity\": 1,\r\n                \"price\": 1600.0\r\n            }\r\n        ],\r\n        \"created_at\": \"2026-10-14T20:30:00\"\r\n    }\r\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/orders/bulk",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "orders",
+            "bulk"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/orders",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\": \"DELIVERED\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/orders/6adc945edd4f4e9845c331b7",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "orders",
+            "6adc945edd4f4e9845c331b7"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/analytics/business",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/analytics/business",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "analytics",
+            "business"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/analytics/cancelled",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/analytics/cancelled",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "analytics",
+            "cancelled"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/analytics/revenue",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/analytics/revenue",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "analytics",
+            "revenue"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/logs/generate_fake",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"number_of_logs\": 100,\r\n    \"days\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/logs/generate_fake",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "logs",
+            "generate_fake"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/metrics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/metrics?time=0.1",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "metrics"
+          ],
+          "query": [
+            {
+              "key": "time",
+              "value": "0.1"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
