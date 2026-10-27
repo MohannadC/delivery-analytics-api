@@ -32,38 +32,38 @@ with tab1:
         col1, col2 = st.columns(2)
         with col1:
             st.metric(label="Всего заказов", value=cancelled_data["total_orders"])
+            fig_pie = px.pie(
+                names=["Доставлено", "Отменено"],
+                values=[
+                    cancelled_data["total_orders"] - cancelled_data["cancelled_orders"],
+                    cancelled_data["cancelled_orders"],
+                ],
+                title="Соотношение статусов заказов",
+                color_discrete_sequence=["#00C853", "#FF5252"],
+            )
+            st.plotly_chart(fig_pie, use_container_width=False)
         with col2:
             rate_percent = round(cancelled_data["cancelled_rate"] * 100, 2)
             st.metric(label="Доля отмен", value=f"{rate_percent}%")
+            revenue_data = fetch_data("/analytics/revenue")
+            if revenue_data:
+                df_revenue = pd.DataFrame(revenue_data)
+                df_revenue = df_revenue.sort_values(by="total_revenue", ascending=True)
+                df_revenue["total_revenue"] /= 1e3
 
-        fig_pie = px.pie(
-            names=["Доставлено", "Отменено"],
-            values=[
-                cancelled_data["total_orders"] - cancelled_data["cancelled_orders"],
-                cancelled_data["cancelled_orders"],
-            ],
-            title="Соотношение статусов заказов",
-            color_discrete_sequence=["#00C853", "#FF5252"],
-        )
-        st.plotly_chart(fig_pie, use_container_width=True)
+                fig_bar = px.bar(
+                    df_revenue,
+                    x="total_revenue",
+                    y="restaurant",
+                    orientation="h",
+                    title="Топ ресторанов по выручке",
+                    labels={
+                        "total_revenue": "Выручка (тыс. руб)",
+                        "restaurant": "Ресторан",
+                    },
+                )
+                st.plotly_chart(fig_bar, use_container_width=False)
 
-    st.divider()
-
-    revenue_data = fetch_data("/analytics/revenue")
-    if revenue_data:
-        df_revenue = pd.DataFrame(revenue_data)
-        df_revenue = df_revenue.sort_values(by="total_revenue", ascending=True)
-        df_revenue["total_revenue"] /= 1e3
-
-        fig_bar = px.bar(
-            df_revenue,
-            x="total_revenue",
-            y="restaurant",
-            orientation="h",
-            title="Топ ресторанов по выручке",
-            labels={"total_revenue": "Выручка (тыс. руб)", "restaurant": "Ресторан"},
-        )
-        st.plotly_chart(fig_bar, use_container_width=True)
 
 with tab2:
     st.header("Мониторинг производительности API (за последние 24 часа)")
