@@ -16,6 +16,20 @@ services:
     volumes:
       - mongo_data:/data/db
     restart: unless-stopped
+  
+  dashboard:
+    build: .
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    environment:
+      - API_URL=http://api:8000 
+    command: >
+      streamlit run dashboard/app.py 
+      --server.port=8501 
+      --server.address=0.0.0.0 
+      --server.headless=true
 
 volumes:
   mongo_data:

@@ -59,6 +59,6 @@ def get_metrics(time: float = 1):
             },
         },
     ]
-    results = list(collection.aggregate(pipeline))
+    results = list(collection.aggregate(pipeline))[0]
 
     return results
